@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+</head>
+<body>
+    <h2>Cadastro de Aluno</h2>
+    <form action="processar_cadastro.php" method="POST">
+        <label for="nome">Nome do Aluno:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+        
+        <label for="matricula">Matrícula do Aluno:</label>
+        <input type="text" id="matricula" name="matricula" required><br><br>
+        
+        <h2>Cadastro de Bolsa</h2>
+        <label for="tipo">Tipo de Bolsa:</label>
+        <select id="tipo" name="tipo">
+            <option value="pesquisa">Pesquisa</option>
+            <option value="extensao">Extensão</option>
+            <option value="monitoria">Monitoria</option>
+            <option value="ensino">Ensino</option>
+            <option value="permanencia">Permanência</option>
+        </select><br><br>
+        
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea><br><br>
+        
+        <input type="submit" value="Cadastrar">
+    </form>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="form sign_in">
+            <h1>Cadastro</h1>
+
+            <form method="POST" action="../Classes/processar_cadastro.php" id="cadastroForm">
+                <label for="nome">Nome :</label>
+                <input type="text" name="nome" id="nome" required><br><br>
+
+                <label for="matricula">Matrícula:</label>
+                <input type="text" name="matricula" id="matricula" required readonly><br><br>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" required><br><br>    
+
+                <label for="tipo">Tipo:</label>
+                <select name="tipo" id="tipo" required>
+                    <option value="">Selecione</option>
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                </select>
+
+                <div id="detalhes-medio" style="display: none;">
+                    <label for="tipo-medio">Tipo de Ensino:</label>
+                    <select name="tipo-medio" id="tipo-medio">
+                        <option value="integrado">Integrado</option>
+                        <option value="subsequente">Subsequente</option>
+                        <option value="concomitantemente">Concomitantemente</option>
+                        <option value="proeja">PROEJA</option>
+                        <option value="superior">Superior</option>
+                        <option value="posgraduacao">PÓS-GRADUAÇÃO</option>
+                    </select><br><br>
+                </div>
+
+                <div id="detalhes-professor" style="display: none;">
+                    <br>
+                    <label for="escolaridade">Escolaridade:</label>
+                    <input type="text" name="escolaridade" required>
+                    <br>
+                    <label for="especialidade">Especialidade:</label>
+                    <input type="text" name="especialidade" required>
+                    <br>
+                </div>
+
+                <div id="detalhes-superior" style="display: none;">
+                    <label for="curso">Curso:</label>
+                    <input type="text" name="curso" id="curso"><br><br>
+                </div>
+
+                <label for="login">Login:</label>
+                <input type="text" name="login" id="login" required><br><br>
+
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required><br><br>
+
+                <input type="button" value="Cadastrar" id="btnCadastrar">
+            </form>
+
+            <script>
+                function gerarMatricula() {
+                    var matricula = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+                    document.getElementById("matricula").value = matricula;
+                }
+
+                // Exibe os campos específicos para cada tipo de aluno selecionado
+                var tipoAluno = document.getElementById("tipo");
+                var detalhesMedio = document.getElementById("detalhes-medio");
+                var detalhesSuperior = document.getElementById("detalhes-superior");
+                var detalhesProfessor = document.getElementById("detalhes-professor");
+
+                tipoAluno.addEventListener("change", function () {
+                    if (tipoAluno.value === "aluno") {
+                        detalhesMedio.style.display = "block";
+                        detalhesSuperior.style.display = "block";
+                        detalhesProfessor.style.display = "none";
+                    } else if (tipoAluno.value === "professor") {
+                        detalhesMedio.style.display = "none";
+                        detalhesSuperior.style.display = "none";
+                        detalhesProfessor.style.display = "block";
+                    }
+                });
+
+                // Adiciona evento de click ao botão de cadastrar
+                document.getElementById("btnCadastrar").addEventListener("click", function () {
+                    Swal.fire({
+                        title: 'Cadastro Realizado!',
+                        text: 'O cadastro foi realizado com sucesso.',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(function () {
+                        // Após o usuário clicar em OK, envie o formulário
+                        document.getElementById("cadastroForm").submit();
+                    });
+                });
+
+                // Gera a matrícula automaticamente quando a página é carregada
+                gerarMatricula();
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

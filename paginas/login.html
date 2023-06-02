@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login page</title>
+  <link rel="stylesheet" href="../style/login.css" />
+  <script src="https://kit.fontawesome.com/7b39153ed3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="container" id="container">
+
+    <!-- sign in form section start-->
+    <div class="form sign_in">
+      <form action="../phps/validar_login.php" method="POST">
+        <!-- heading -->
+        <h1>Entrar</h1>
+
+        <span>UNIFACUL</span>
+        <!-- input fields start -->
+        <input type="email" name="login" placeholder="Email">
+        <input type="password" name="senha" placeholder="Password">
+        <span>Esqueceu sua <span class="forgot">senha?</span></span>
+        <button type="submit">Login</button>
+        <!-- input fields end -->
+      </form>
+    </div>
+    <!-- sign in form section end-->
+
+    <!-- overlay section start-->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-pannel overlay-left">
+          <h1>Inscreva-se</h1>
+          <p>Bem vindo ao novo</p>
+          <a href="cadastro.html"><button id="signIn" class="overBtn">Aluno</button></a>
+          <a href="cadastro_professor.html"><button id="signIn" class="overBtn">Professor</button></a>
+        </div>
+        <div class="overlay-pannel overlay-right">
+          <h1>Crie sua conta</h1>
+          <p>O novo começa agora
+            UNIFACUL
+          </p>
+          <button id="signUp" class="overBtn">Criar Conta</button>
+          
+        </div>
+      </div>
+    </div>
+    <!-- overlay section start-->
+  </div>
+  <script src="../jscode/login.js"></script>
+</body>
+
+</html>
