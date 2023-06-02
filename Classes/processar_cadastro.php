@@ -27,6 +27,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // Verifica se o CPF já existe na tabela "Aluno"
+    $sqlCheckCPF = "SELECT * FROM Aluno WHERE cpf = :cpf";
+    $stmtCheckCPF = $conn->prepare($sqlCheckCPF);
+    $stmtCheckCPF->bindParam(":cpf", $cpf);
+    $stmtCheckCPF->execute();
+
+    if ($stmtCheckCPF->rowCount() > 0) {
+        // O CPF já existe, exibe o alerta
+        echo '<script>alert("O CPF já está cadastrado. Por favor, verifique os dados informados."); history.go(-1);</script>';
+        exit();
+    }
+
     // Prepara a consulta SQL para inserir os dados do aluno ou professor
     if ($tipo === "aluno") {
         $curso = $_POST["curso"]; // Obtém o valor do campo de input 'curso'
@@ -53,7 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Executa a consulta
     if ($stmt->execute()) {
         echo "Dados inseridos com sucesso na tabela " . ($tipo === "aluno" ? "Aluno" : "Professor") . ".";
-    } else {
+    } else
+
+ {
         echo "Erro ao inserir dados na tabela " . ($tipo === "aluno" ? "Aluno" : "Professor") . ".";
     }
 
