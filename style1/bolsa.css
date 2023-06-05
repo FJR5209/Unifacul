@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #d3fab6 ;
+    background-size: cover;
+    margin: 0;
+    padding: 50px;
+  }
+  
+  
+  h2 {
+    color: #333;
+  }
+  
+  form {
+    background-color: rgb(198, 221, 147);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(234, 234, 238, 0.774);
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgb(119, 96, 96);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid rgb(214, 255, 173);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"] {
+    background-color: #cfcfcf;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #ff0d0d;
+  }
+  
+  textarea {
+    height: 100px;
+  }
+  
+  /* Estilo para erro de validação de campo obrigatório */
+  input:invalid,
+  textarea:invalid {
+    border: 1px solid rgb(243, 234, 234);
+  }
+  
+  input:valid,
+  textarea:valid {
+    border: 1px solid #ccc;
+  }
+  .container {
+    max-width: 400px;
+    width: 100%;
+    padding: 0 20px;
+  }
+ 
+  form {
+    background-color: #c3f8ab;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    width: 300px;
+    margin: 0 auto;
+    break-inside: avoid; /* Adiciona a quebra de bordas */
+  }
+
+  
+  
+  

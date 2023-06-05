@@ -1,0 +1,60 @@
+/* Insira o código CSS fornecido aqui */
+body {
+    font-family: Arial, sans-serif;
+    background: #d3fab6 ;
+    background-size: cover;
+    margin: 0;
+    padding: 40px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  form {
+    background-color: #c3f8ab;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(234, 234, 238, 0.774);
+    width: 300px;
+  }
+  
+  h1 {
+    color: #333;
+    text-align: center; /* Adiciona alinhamento central */
+    margin-top: 0; /* Remove a margem superior padrão */
+    margin-bottom: 20px; /* Adiciona margem inferior */
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid rgb(119, 96, 96);
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+  
+  button[type="submit"] {
+    background-color: #cfcfcf;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #10d3ec;
+  }
+  
