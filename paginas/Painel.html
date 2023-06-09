@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle</title>
+</head>
+
+<body>
+    <h2>Painel de Controle</h2>
+    <form action="../Classes/painel.php" method="POST">
+        <label for="opcao">Selecione a opção:</label>
+        <select name="opcao" id="opcao">
+            <option value="alunos_por_curso">Alunos por Curso</option>
+            <option value="alunos_por_disciplina">Alunos por Disciplina</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Visualizar">
+    </form>
+</body>
+
+</html>
