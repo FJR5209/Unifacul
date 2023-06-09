@@ -8,8 +8,7 @@ class Curso {
     private $alunos;
     private $disciplinas;
     
-    public function __construct($idCurso, $nomeCurso, $cargaHorariaCurso) {
-        $this->idCurso = $idCurso;
+    public function __construct($nomeCurso, $cargaHorariaCurso) {
         $this->nomeCurso = $nomeCurso;
         $this->cargaHorariaCurso = $cargaHorariaCurso;
         $this->professores = array();
@@ -64,4 +63,5 @@ class Curso {
         return $this->disciplinas;
     }
 }
+
 ?>

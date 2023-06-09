@@ -49,9 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $idBolsa = $stmt->insert_id;
 
                 // Inserir dados na tabela "aluno_bolsa"
-                $sql = "INSERT INTO aluno_bolsa (idAluno, idBolsa) VALUES (?, ?)";
+                $sql = "INSERT INTO aluno_bolsa (idAluno, nomeBolsa) VALUES (?, ?)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ii", $idAluno, $idBolsa);
+                $stmt->bind_param("ii", $idAluno, $nomeBolsa);
                 if ($stmt->execute()) {
                     echo "<script>window.location.href='../paginas/bolsa.html';</script>";
                 } else {
