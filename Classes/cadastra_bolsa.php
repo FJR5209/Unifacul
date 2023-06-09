@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtém os valores enviados pelo formulário
     $nome = $_POST["nome"];
     $descricao = $_POST["mensagem"];
+    $professor = $_POST["professor"];
 
     // Conecta ao banco de dados
     $servername = "localhost";
@@ -19,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepara o comando SQL para inserção
-    $sql = "INSERT INTO bolsa (nomeBolsa, descricao) VALUES ('$nome', '$descricao')";
+    $sql = "INSERT INTO bolsa (nomeBolsa, descricao, professor) VALUES ('$nome', '$descricao', '$professor')";
 
     // Executa o comando SQL
     if ($conn->query($sql) === TRUE) {

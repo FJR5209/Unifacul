@@ -42,7 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepara a consulta SQL para inserir os dados do aluno ou professor
     if ($tipo === "aluno") {
         $curso = $_POST["curso"]; // Obtém o valor do campo de input 'curso'
-        $sql = "INSERT INTO Aluno (nomeAluno, matriculaAluno, cpf, aluno_curso) VALUES (:nome, :matricula, :cpf, :curso)";
+        $tipoEnsino = $_POST["tipo-medio"]; // Obtém o valor do campo de input 'tipo-medio'
+        $sql = "INSERT INTO Aluno (nomeAluno, matriculaAluno, cpf, aluno_curso, tipo_ensino) VALUES (:nome, :matricula, :cpf, :curso, :tipoEnsino)";
     } elseif ($tipo === "professor") {
         $escolaridade = $_POST["escolaridade"];
         $especialidade = $_POST["especialidade"];
@@ -57,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifica o tipo de usuário para fazer o bind dos parâmetros corretos
     if ($tipo === "aluno") {
         $stmt->bindParam(":curso", $curso);
+        $stmt->bindParam(":tipoEnsino", $tipoEnsino);
     } elseif ($tipo === "professor") {
         $stmt->bindParam(":escolaridade", $escolaridade);
         $stmt->bindParam(":especialidade", $especialidade);
@@ -65,9 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Executa a consulta
     if ($stmt->execute()) {
         echo "Dados inseridos com sucesso na tabela " . ($tipo === "aluno" ? "Aluno" : "Professor") . ".";
-    } else
-
- {
+    } else {
         echo "Erro ao inserir dados na tabela " . ($tipo === "aluno" ? "Aluno" : "Professor") . ".";
     }
 
