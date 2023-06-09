@@ -28,8 +28,8 @@ class Disciplina {
         return $this->cargaHorariaDisciplina;
     }
     
-    public function setProfessor($professor) {
-        $this->professor = $professor;
+    public function setProfessor($idProfessor) {
+        $this->professor = $idProfessor;
     }
     
     public function getProfessor() {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Disciplina</title>
+</head>
+
+<body>
+    <h1>Cadastro de Disciplina</h1>
+
+    <form method="POST" action="../Classes/processar_disciplina.php">
+        <label for="idDisciplina">ID da Disciplina:</label>
+        <input type="text" name="idDisciplina" id="idDisciplina" required>
+        <br>
+
+        <label for="nomeDisciplina">Nome da Disciplina:</label>
+        <input type="text" name="nomeDisciplina" id="nomeDisciplina" required>
+        <br>
+
+        <label for="cargaHorariaDisciplina">Carga Horária:</label>
+        <input type="text" name="cargaHorariaDisciplina" id="cargaHorariaDisciplina" required>
+        <br>
+
+        <label for="professor">Professor:</label>
+        <input type="text" name="professor" id="professor" required>
+        <br>
+
+        <input type="submit" value="Cadastrar Disciplina">
+    </form>
+</body>
+
+</html>

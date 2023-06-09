@@ -16,6 +16,11 @@ class Conexao
         }
     }
 
+    public function getConn()
+    {
+        return $this->conn;
+    }
+
     public function executarConsulta($sql)
     {
         return $this->conn->query($sql);
@@ -26,4 +31,6 @@ class Conexao
         $this->conn->close();
     }
 }
+
+
 ?>
