@@ -75,6 +75,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             break;
 
+        case "alunos_posgraduacao":
+            // Consultar os alunos da pós-graduação
+            $query = "SELECT p.nome, a.nomeAluno FROM programa_posgraduacao p
+                      JOIN aluno_posgraduacao ap ON p.id = ap.idProgramaPosgraduacao
+                      JOIN aluno a ON ap.idAluno = a.idAluno
+                      ORDER BY p.nome, a.nomeAluno";
+
+            $result = $conn->query($query);
+
+            if ($result->num_rows > 0) {
+                echo "<h2>Alunos da Pós-Graduação</h2>";
+
+                $currentProgram = "";
+                while ($row = $result->fetch_assoc()) {
+                    $program = $row["nome"];
+                    $student = $row["nomeAluno"];
+
+                    if ($program !== $currentProgram) {
+                        echo "<h3>$program</h3>";
+                        $currentProgram = $program;
+                    }
+
+                    echo "$student<br>";
+                }
+            } else {
+                echo "Nenhum aluno encontrado.";
+            }
+            break;
+
         default:
             echo "Opção inválida.";
             break;
