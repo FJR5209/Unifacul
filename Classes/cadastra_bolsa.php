@@ -1,35 +1,36 @@
 <?php
-// Verifica se o formulário foi enviado
+define("DB_SERVER", "localhost");
+define("DB_USERNAME", "root");
+define("DB_PASSWORD", "");
+define("DB_NAME", "universidade");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém os valores enviados pelo formulário
-    $nome = $_POST["nome"];
-    $descricao = $_POST["mensagem"];
+    // Dados recebidos do formulário
+    $nomeBolsa = $_POST["nome"];
     $professor = $_POST["professor"];
+    $tipo = $_POST["tipo"];
 
-    // Conecta ao banco de dados
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "universidade";
+    // Criar a conexão com o banco de dados
+    $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verifica se a conexão foi estabelecida com sucesso
+    // Verificar se houve algum erro na conexão
     if ($conn->connect_error) {
-        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+        die("Erro na conexão com o banco de dados: " . $conn->connect_error);
     }
 
-    // Prepara o comando SQL para inserção
-    $sql = "INSERT INTO bolsa (nomeBolsa, descricao, professor) VALUES ('$nome', '$descricao', '$professor')";
-
-    // Executa o comando SQL
-    if ($conn->query($sql) === TRUE) {
-        echo "Cadastro da bolsa realizado com sucesso.";
+    // Inserir dados na tabela "bolsa"
+    $sql = "INSERT INTO bolsa (nomeBolsa, professor, tipo) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $nomeBolsa, $professor, $tipo);
+    
+    if ($stmt->execute()) {
+        echo "Dados inseridos com sucesso na tabela bolsa.";
     } else {
-        echo "Erro ao cadastrar a bolsa: " . $conn->error;
+        echo "Erro ao inserir dados na tabela bolsa: " . $stmt->error;
     }
 
-    // Fecha a conexão com o banco de dados
+    // Fechar a conexão
+    $stmt->close();
     $conn->close();
 }
 ?>

@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST["login"];
     $senha = $_POST["senha"];
     $tipo = $_POST["tipo"];
+    $tipoEnsino = $_POST["tipo-medio"];
 
     // Inclui o arquivo de configuração do banco de dados
     require_once "config.php";
@@ -27,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Verifica se o CPF já existe na tabela "Aluno"
-    $sqlCheckCPF = "SELECT * FROM Aluno WHERE cpf = :cpf";
+    // Verifica se o CPF já existe na tabela "Aluno" ou "Professor"
+    $sqlCheckCPF = "SELECT * FROM " . ($tipo === "aluno" ? "Aluno" : "Professor") . " WHERE cpf = :cpf";
     $stmtCheckCPF = $conn->prepare($sqlCheckCPF);
     $stmtCheckCPF->bindParam(":cpf", $cpf);
     $stmtCheckCPF->execute();
@@ -40,31 +41,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepara a consulta SQL para inserir os dados do aluno ou professor
-    if ($tipo === "aluno") {
-        $curso = $_POST["curso"]; // Obtém o valor do campo de input 'curso'
-        $tipoEnsino = $_POST["tipo-medio"]; // Obtém o valor do campo de input 'tipo-medio'
-        $sql = "INSERT INTO Aluno (nomeAluno, matriculaAluno, cpf, aluno_curso, tipo_ensino) VALUES (:nome, :matricula, :cpf, :curso, :tipoEnsino)";
-    } elseif ($tipo === "professor") {
-        $escolaridade = $_POST["escolaridade"];
-        $especialidade = $_POST["especialidade"];
-        $sql = "INSERT INTO Professor (nomeProfessor, matriculaProfessor, cpf, escolaridade, especialidade) VALUES (:nome, :matricula, :cpf, :escolaridade, :especialidade)";
-    }
+if ($tipo === "aluno") {
+    $curso = $_POST["curso"]; // Obtém o valor do campo de input 'curso'
+    $tipoEnsino = $_POST["tipo-medio"]; // Obtém o valor do campo de input 'tipo-medio'
+    $sql = "INSERT INTO Aluno (nomeAluno, matriculaAluno, cpf, tipo_ensino) VALUES (:nome, :matricula, :cpf, :tipoEnsino)";
+} elseif ($tipo === "professor") {
+    $escolaridade = $_POST["escolaridade"];
+    $especialidade = $_POST["especialidade"];
+    $sql = "INSERT INTO Professor (nomeProfessor, matriculaProfessor, cpf, escolaridade, especialidade) VALUES (:nome, :matricula, :cpf, :escolaridade, :especialidade)";
+}
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":nome", $nome);
-    $stmt->bindParam(":matricula", $matricula);
-    $stmt->bindParam(":cpf", $cpf);
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(":nome", $nome);
+$stmt->bindParam(":matricula", $matricula);
+$stmt->bindParam(":cpf", $cpf);
 
-    // Verifica o tipo de usuário para fazer o bind dos parâmetros corretos
-    if ($tipo === "aluno") {
-        $stmt->bindParam(":curso", $curso);
-        $stmt->bindParam(":tipoEnsino", $tipoEnsino);
-    } elseif ($tipo === "professor") {
-        $stmt->bindParam(":escolaridade", $escolaridade);
-        $stmt->bindParam(":especialidade", $especialidade);
-    }
+// Verifica o tipo de usuário para fazer o bind dos parâmetros corretos
+if ($tipo === "aluno") {
+    $stmt->bindParam(":tipoEnsino", $tipoEnsino);
+} elseif ($tipo === "professor") {
+    $stmt->bindParam(":escolaridade", $escolaridade);
+    $stmt->bindParam(":especialidade", $especialidade);
+}
 
-    // Executa a consulta
+  // Executa a consulta
     if ($stmt->execute()) {
         echo "Dados inseridos com sucesso na tabela " . ($tipo === "aluno" ? "Aluno" : "Professor") . ".";
     } else {
