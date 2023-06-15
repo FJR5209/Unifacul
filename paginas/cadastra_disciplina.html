@@ -7,27 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style1/cadastro.css">
     <title>Cadastro de Disciplina</title>
+    
+       
 </head>
 
 <body>
-    <h1>Cadastro de Disciplina</h1>
-
-    <form method="POST" action="../Classes/processar_disciplina.php">
+    <div class="container">
        
-        <label for="nomeDisciplina">Nome da Disciplina:</label>
-        <input type="text" name="nomeDisciplina" id="nomeDisciplina" required>
-        <br>
 
-        <label for="cargaHorariaDisciplina">Carga Horária:</label>
-        <input type="text" name="cargaHorariaDisciplina" id="cargaHorariaDisciplina" required>
-        <br>
+        <form method="POST" action="../Classes/processar_disciplina.php">
+            <h1>Cadastro de Disciplina</h1>
+            <label for="nomeDisciplina">Nome da Disciplina:</label>
+            <input type="text" name="nomeDisciplina" id="nomeDisciplina" required>
 
-        <label for="professor">Professor:</label>
-        <input type="text" name="professor" id="professor" required>
-        <br>
+            <label for="cargaHorariaDisciplina">Carga Horária:</label>
+            <input type="text" name="cargaHorariaDisciplina" id="cargaHorariaDisciplina" required>
 
-        <input type="submit" value="Cadastrar Disciplina">
-    </form>
+            <label for="professor">Professor:</label>
+            <input type="text" name="professor" id="professor" required>
+
+            <input type="submit" value="Cadastrar Disciplina">
+        </form>
+    </div>
 </body>
 
 </html>
