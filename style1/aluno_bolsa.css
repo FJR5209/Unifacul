@@ -20,6 +20,19 @@ label {
     margin-bottom: 10px;
 }
 
+/* input[type="text"] */
+input[type="text"] {
+    background-color: #ecececdd;
+    border: none;
+    font-size: 14px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    width: 100%;
+    color: #333;
+    outline: none;
+    border-radius: 5px;
+}
+
 /* select */
 select {
     background-color: #ecececdd;

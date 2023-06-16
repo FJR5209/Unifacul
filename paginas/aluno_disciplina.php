@@ -79,10 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrícula</title>
+    <link rel="stylesheet" href="../style1/disciplina.css">
+        <title>Matrícula</title>
 </head>
 
 <body>
+
     <h2>Matrícula do Aluno</h2>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
         <label for="nomeAluno">Nome do Aluno:</label>
@@ -99,9 +101,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<option value='$disciplina'>$disciplina</option>";
             }
             ?>
+           
         </select><br><br>
 
-        <input type="submit" value="Enviar">
+        <input class="btn" type="submit" value="Enviar">
     </form>
 </body>
 
